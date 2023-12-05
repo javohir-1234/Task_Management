@@ -1,0 +1,3 @@
+jwt:
+  secret: qwerty:qwert:qerttqrjlwqerjlqewjr1233455qwerqwrqwer
+  expiry: 100000000000

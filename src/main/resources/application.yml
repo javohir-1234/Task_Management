@@ -1,3 +1,35 @@
 jwt:
   secret: qwerty:qwert:qerttqrjlwqerjlqewjr1233455qwerqwrqwer
   expiry: 100000000000
+
+database:
+  username: postgres
+  password: 2610
+
+mail:
+  sender: something@gmail.com
+  password: jsadlfj
+
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${mail.sender}
+    password: ${mail.password}
+    properties:
+      mail.smtp.starttls.enable: true
+      mjaail.smtp.auth: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${database.username}
+    password: ${database.password}
+    url: jdbc:postgresql://localhost:5432/postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show_sql: true

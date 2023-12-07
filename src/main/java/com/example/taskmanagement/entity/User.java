@@ -27,7 +27,11 @@ public class User extends BaseEntity implements UserDetails {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private List<UserRole> roles;
+    private Set<UserRole> roles;
+    @Column(columnDefinition = "boolean default false")
+    private boolean isVerify;
+    @Column(nullable = false)
+    private int code;
 
 
 

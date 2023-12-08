@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,7 @@ public abstract class BaseService<
         ENTITY entity = repository().findById(id)
                 .orElseThrow(() -> new DataNotFound("Data Not Found"));
         entity.setActive(false);
+        repository().save(entity);
     }
 
     public RES update(ID id, REQ request) throws DataNotFound {
@@ -64,13 +66,16 @@ public abstract class BaseService<
 
     public List<RES> getAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return repository().findAll(pageable)
-                .stream().map(e -> entityToResponse(e))
+        List<RES> collect = repository().findAll(pageable)
+                .stream()
+                .filter(BaseEntity::isActive)
+                .map(this::entityToResponse)
                 .collect(Collectors.toList());
+        return collect;
     }
 
 
-    public abstract ENTITY requestToEntity(REQ request);
+    public abstract ENTITY requestToEntity(REQ request) throws DataNotFound;
 
     public abstract RES entityToResponse(ENTITY entity);
 }

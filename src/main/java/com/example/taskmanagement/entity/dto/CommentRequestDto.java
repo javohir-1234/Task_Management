@@ -12,5 +12,6 @@ import java.util.UUID;
 public class CommentRequestDto {
 
     private String comment;
-    private UUID user;
+    private UUID userId;
+    private UUID taskId;
 }

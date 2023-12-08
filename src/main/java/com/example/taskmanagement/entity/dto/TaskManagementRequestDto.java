@@ -21,4 +21,5 @@ public class TaskManagementRequestDto {
     private Priority priority;
     private UUID creator;
     private List<CommentRequestDto> comments;
+    private List<UserRequestDto> executors;
 }

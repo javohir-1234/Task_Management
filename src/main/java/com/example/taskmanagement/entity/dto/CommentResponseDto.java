@@ -12,5 +12,5 @@ import java.util.UUID;
 public class CommentResponseDto {
 
     private String comment;
-    private UUID user;
+    private UUID userId;
 }

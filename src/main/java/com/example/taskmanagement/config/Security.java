@@ -26,6 +26,8 @@ public class Security {
             "/auth/verify",
             "/auth/generate-token",
             "/auth/get-verify-code",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
 //            "/task-management/create-task",
 //            "/task-management/delete-task",
 //            "/task-management/edit-task",

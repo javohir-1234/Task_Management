@@ -19,7 +19,8 @@ public class Comment extends BaseEntity{
 
     private String comment;
 
-    private UUID userId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private TaskManagement taskManagement;

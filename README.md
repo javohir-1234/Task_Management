@@ -1,0 +1,3 @@
+- `Project Name`: Task Management.
+- `A brief description...`: This Api helps to create tasks.
+- `Usage`: This Api have Authentication. User should first sign up or sign in. And then able to generate json web token by using one endpoint. And not sing in every time when accessing endpoint user can use jwt.

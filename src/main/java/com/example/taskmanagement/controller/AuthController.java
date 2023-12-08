@@ -19,13 +19,13 @@ public class AuthController {
     private final UserService userService;
 
 
-    @PostMapping("/sing-up")
+    @PostMapping("/sign-up")
     public UserResponseDto signUp(@RequestBody UserRequestDto userRequestDto) throws NotCorrectEmail {
         return userService.singUp(userRequestDto);
     }
 
 
-    @PostMapping("/sing-in")
+    @PostMapping("/sign-in")
     public UserResponseDto signIn(@RequestBody SignInDto user) throws DataNotFound, UserNotVerified {
         return userService.singIn(user);
     }

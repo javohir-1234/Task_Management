@@ -16,8 +16,7 @@ import java.util.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
-@Entity
+@Entity(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
 

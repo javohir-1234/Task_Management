@@ -3,6 +3,7 @@ package com.example.taskmanagement.service;
 import com.example.taskmanagement.entity.BaseEntity;
 import com.example.taskmanagement.exceptions.DataNotFound;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -15,8 +16,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
-@AllArgsConstructor
 public abstract class BaseService<
         ENTITY extends BaseEntity,
         ID extends UUID,
@@ -29,7 +28,7 @@ public abstract class BaseService<
 
     public abstract REP repository();
 
-    public RES create(REQ request) {
+    public RES create(REQ request) throws DataNotFound {
         ENTITY entity = requestToEntity(request);
         repository().save(entity);
         return entityToResponse(entity);

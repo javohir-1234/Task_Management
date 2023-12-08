@@ -5,10 +5,12 @@ jwt:
 database:
   username: postgres
   password: 2610
+  db_name: task_management
 
 mail:
-  sender: something@gmail.com
-  password: jsadlfj
+  sender: jovohirilyasov2004@gmail.com
+  password: oimbhucejgsujloe
+
 
 
 spring:
@@ -24,7 +26,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${database.username}
     password: ${database.password}
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/${database.db_name}
   jpa:
     hibernate:
       ddl-auto: update

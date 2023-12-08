@@ -21,12 +21,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Security {
 
     private static final String[] WHITE_LIST = {
-            "/auth/sing-up",
-            "/auth/sing-in",
+            "/auth/sign-up",
+            "/auth/sign-in",
             "/auth/verify",
-            "/auth/",
+            "/auth/generate-token",
             "/auth/get-verify-code",
-            "/auth/generate-token"
+//            "/task-management/create-task",
+//            "/task-management/delete-task",
+//            "/task-management/edit-task",
+//            "/task-management/get-tasks",
     };
     private final JWTService jwtService;
     private final AuthenticationService authenticationService;

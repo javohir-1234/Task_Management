@@ -106,14 +106,16 @@ public class UserService extends BaseService<
     }
 
     public void sendVerificationCode(String email) throws DataNotFound {
+        System.out.println(email);
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new DataNotFound("Data Not Found"));
         if (user.isActive()) {
             user.setCode(random.nextInt(1000, 10000));
             userRepository.save(user);
             notificationService.sendVerificationCode(user.getEmail(), user.getCode());
+        }else {
+            throw new DataNotFound("User Not Found");
         }
-        throw new DataNotFound("User Not Found");
     }
 
     public String generateToken(UserRequestDto userRequestDto) throws DataNotFound {

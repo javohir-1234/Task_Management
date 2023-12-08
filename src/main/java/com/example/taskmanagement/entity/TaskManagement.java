@@ -2,14 +2,14 @@ package com.example.taskmanagement.entity;
 
 import com.example.taskmanagement.entity.enumType.Priority;
 import com.example.taskmanagement.entity.enumType.Status;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -22,8 +22,16 @@ public class TaskManagement extends BaseEntity{
     @Column(nullable = false)
     private String title;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Status status;
+    @Enumerated(EnumType.STRING)
     private Priority priority;
-    @OneToOne
-    private User user;
+
+    private UUID creator;
+
+    @OneToMany(mappedBy = "taskManagement", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Comment> comments;
+
+    @OneToMany()
+    private List<User> executors;
 }
